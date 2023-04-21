@@ -8,7 +8,7 @@
 using namespace std;
 using namespace ariel;
 
-TEST_CASE("initialize two fractions and check results") {
+TEST_CASE("Initialize two fractions and check results") {
     // Create two fractions
     ariel::Fraction f1(5, 6);
     ariel::Fraction f2(3, 4);
@@ -24,7 +24,7 @@ TEST_CASE("initialize two fractions and check results") {
     CHECK((f2 < f1));
 }
 
-TEST_CASE("denominator cant be zero") {
+TEST_CASE("Denominator cant be zero") {
     CHECK_THROWS(ariel::Fraction(4, 0));
 
 }
@@ -39,7 +39,23 @@ TEST_CASE("== operator works correctly with float at right") {
     CHECK((a == 4.0));
 }
 
+TEST_CASE("Fraction cannot be divided by zero") {
+    ariel::Fraction a(4, 1);
+    ariel::Fraction b(0, 0);
+    CHECK_THROWS(a / b);
+    CHECK_THROWS(b / a);
+    CHECK_THROWS_AS(a / ariel::Fraction(0, 1), std::invalid_argument);
 
+}
 
+TEST_CASE("Fraction addition and subtraction work correctly") {
+    ariel::Fraction a(3, 4);
+    ariel::Fraction b(1, 4);
+    ariel::Fraction c(1, 3);
+    CHECK(a + b == ariel::Fraction(1, 1));
+    CHECK(a - b == c);
+    CHECK(a + ariel::Fraction(0, 1) == a);
+    CHECK(a + b + c == 1.3333);
+}
 
 

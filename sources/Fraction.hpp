@@ -24,83 +24,63 @@ namespace ariel {
 
         // overload plus+ operator
         Fraction operator+(const Fraction &other) const;
-
-        Fraction operator+(float f);
-
-        friend Fraction operator+(const Fraction &f1, float f);
+        Fraction operator+(float flo);
+        friend Fraction operator+(const Fraction &other, float flo);
 
         // overload minus- operator
         Fraction operator-(const Fraction &other) const;
-
-        Fraction operator-(float f);
-
-        friend Fraction operator-(const Fraction &f1, float f);
+        Fraction operator-(float flo);
+        friend Fraction operator-(const Fraction &other, float flo);
 
         // overload div/ operator
         Fraction operator/(const Fraction &other) const;
-
-        Fraction operator/(float f) const;
-
-        friend Fraction operator/(const Fraction &f1, float f);
+        Fraction operator/(float flo) const;
+        friend Fraction operator/(const Fraction &other, float flo);
 
         // overload mul* operator
         Fraction operator*(const Fraction &other) const;
-
-        Fraction operator*(float f) const;
-
-        friend Fraction operator*(float f, const Fraction &f1);
+        Fraction operator*(float flo) const;
+        friend Fraction operator*(float flo, const Fraction &other);
 
         // overload ++operator and --operator (prefix)
         Fraction &operator++();
-
         Fraction &operator--();
 
         // overload operator++ and operator--(postfix)
         const ariel::Fraction operator++(int);
-
         const ariel::Fraction operator--(int);
 
         // overload operator ==
         bool operator==(const Fraction &other) const;
-
-        bool operator==(float f) const;
-
-        friend bool operator==(float f, const Fraction &f1);
+        bool operator==(float flo) const;
+        friend bool operator==(float flo, const Fraction &other);
 
         // overload operator >=
         bool operator>=(const Fraction &other) const;
-
-        bool operator>=(float f) const;
-
-        friend bool operator>=(float f, const Fraction &f1);
+        bool operator>=(float flo) const;
+        friend bool operator>=(float flo, const Fraction &other);
 
         // overload operator <=
         bool operator<=(const Fraction &other) const;
-
-        bool operator<=(float f) const;
-
-        friend bool operator<=(float f, const Fraction &f1);
+        bool operator<=(float flo) const;
+        friend bool operator<=(float flo, const Fraction &other);
 
 
         // overload operator >
         bool operator>(const Fraction &other) const;
-
-        bool operator>(float f) const;
-
-        friend bool operator>(float f, const Fraction &f1);
+        bool operator>(float flo) const;
+        friend bool operator>(float flo, const Fraction &other);
 
         // overload operator <
         bool operator<(const Fraction &other) const;
-
-        bool operator<(float f) const;
-
-        friend bool operator<(float f, const Fraction &f1);
+        bool operator<(float flo) const;
+        friend bool operator<(float flo, const Fraction &other);
 
         // overload operator >>
-        friend std::istream &operator>>(std::istream &inputs, Fraction &f1);
+        friend std::istream &operator>>(std::istream &inputs, Fraction &other);
 
         // overload operator <<
-        friend std::ostream &operator<<(std::ostream &outputs, const Fraction &f1);
+        friend std::ostream &operator<<(std::ostream &outputs, const Fraction &other);
     };
 
 }
