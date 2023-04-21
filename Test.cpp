@@ -39,7 +39,7 @@ TEST_CASE("== operator works correctly with float at right") {
     CHECK((a == 4.0));
 }
 
-TEST_CASE()
+
 
 
 
