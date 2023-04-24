@@ -4,10 +4,36 @@
 #include "Fraction.hpp"
 
 ariel::Fraction::Fraction(int numerator, int denominator) {
+    if (denominator == 0) {
+        throw std::runtime_error("division by 0");
+    }
+    this->numerator_ = numerator;
+    this->denominator_ = denominator;
+    minimize();
 }
 
 ariel::Fraction::Fraction() {
+    this->numerator_ = 0;
+    this->denominator_ = 1;
 }
+
+//Help function
+void ariel::Fraction::minimize() {
+    int gcd_value = gcd(this->numerator_, this->denominator_);
+    this->numerator_ /= gcd_value;
+    this->denominator_ /= gcd_value;
+
+}
+
+//Help function(the greatest common divisor)
+int ariel::Fraction::gcd(int numerator, int denominator) {
+    while (denominator != 0) {
+        int temp = denominator;
+        denominator = numerator % denominator;
+    }
+    return numerator;
+}
+
 
 ariel::Fraction ariel::Fraction::operator+(const ariel::Fraction &other) const {
     return other;

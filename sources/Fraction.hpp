@@ -81,6 +81,10 @@ namespace ariel {
 
         // overload operator <<
         friend std::ostream &operator<<(std::ostream &outputs, const Fraction &other);
+
+        int gcd(int numerator, int denominator);
+
+        void minimize();
     };
 
 }
