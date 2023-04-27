@@ -29,6 +29,11 @@ Fraction::Fraction(float flo) {
     minimize();
 }
 
+Fraction::Fraction(const Fraction &other) {
+    this->numerator_ = other.numerator_;
+    this->denominator_ = other.denominator_;
+}
+
 //Help function
 void Fraction::minimize() {
     int gcd_value = gcd(this->numerator_, this->denominator_);
@@ -121,20 +126,35 @@ Fraction operator/(const Fraction &other, float flo) {
 
 // * operator
 Fraction Fraction::operator*(const Fraction &other) const {
-    return other;
+    //Multiply the numerator of the first fraction by the numerator of the second fraction
+    int numerator_result = (this->numerator_ * other.numerator_);
+    //Multiply the denominator of the first fraction by the denominator of the second fraction
+    int denominator_result = (this->denominator_ * other.denominator_);
+    // create a new Fraction called res(to hold the result)
+    Fraction res(numerator_result, denominator_result);
+    res.minimize();
+    return res;
 }
 
 Fraction Fraction::operator*(float flo) const {
-    return *this;
+    Fraction floatFraction(flo);
+    return (*this * floatFraction);
 }
 
 Fraction operator*(float flo, const Fraction &other) {
-    return other;
+    Fraction floatFraction(flo);
+    return (other * floatFraction);
 }
 
 //  ++ operator (prefix)
 Fraction &Fraction::operator++() {
-    return *this;
+    //create a copy fraction using my copy constructor
+    Fraction copyFraction(*this);
+   //
+   this->numerator_+= this->denominator_;
+   minimize();
+   //Return the original fraction before the increment
+    return (*this);
 }
 
 //-- operator (prefix)
