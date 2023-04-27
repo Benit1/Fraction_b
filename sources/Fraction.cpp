@@ -75,8 +75,8 @@ Fraction Fraction::operator-(const Fraction &other) const {
     // check if the fractions are equal
     bool equal = (this->numerator_ == other.numerator_) && (this->denominator_ == other.denominator_);
     // calculate the numerator and denominator of the result
-    int numerator_result = this->numerator_ * other.denominator_ - other.numerator_ * this->denominator_;
-    int denominator_result = this->denominator_ * other.denominator_;
+    int numerator_result = (this->numerator_ * other.denominator_) - (other.numerator_ * this->denominator_);
+    int denominator_result = (this->denominator_ * other.denominator_);
     // create a new Fraction called res(to hold the result)
     Fraction res(numerator_result, denominator_result);
     res.minimize();
@@ -88,24 +88,35 @@ Fraction Fraction::operator-(const Fraction &other) const {
 }
 
 Fraction Fraction::operator-(float flo) {
-    return *this;
+    Fraction floatFraction(flo);
+    return (*this - floatFraction);
 }
 
 Fraction operator-(const Fraction &other, float flo) {
-    return other;
+    Fraction floatFraction(flo);
+    return (other - floatFraction);
 }
 
 // / operator
 Fraction Fraction::operator/(const Fraction &other) const {
-    return other;
+    //Multiply the numerator of the first fraction by the denominator of the second fraction
+    int numerator_result = (this->numerator_ * other.denominator_);
+    //Multiply the denominator of the first fraction by the numerator of the second fraction
+    int denominator_result = (this->denominator_ * other.numerator_);
+    // create a new Fraction called res(to hold the result)
+    Fraction res(numerator_result, denominator_result);
+    res.minimize();
+    return res;
 }
 
 Fraction Fraction::operator/(float flo) const {
-    return *this;
+    Fraction floatFraction(flo);
+    return (*this / floatFraction);
 }
 
 Fraction operator/(const Fraction &other, float flo) {
-    return other;
+    Fraction floatFraction(flo);
+    return (other / floatFraction);
 }
 
 // * operator
