@@ -22,6 +22,8 @@ namespace ariel {
 
         Fraction(int numerator, int denominator);
 
+        Fraction(float flo);
+
         // overload plus+ operator
         Fraction operator+(const Fraction &other) const;
         Fraction operator+(float flo);
