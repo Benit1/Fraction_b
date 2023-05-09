@@ -29,6 +29,17 @@ int main() {
     Fraction c = a + b - 1;
     cout << c++ << endl;
     cout << --c << endl;
+    Fraction d(2, 5), h(4, 5);
+    Fraction v = d - h;
+    Fraction x = d / h;
+    if (v.getNumerator() == -2) {
+        cout << "yay" << endl;
+    }
+    if (v.getDenominator() == 5) {
+        cout << "yay2" << endl;
+    }
+    cout << v << "=" << endl;
+    cout << "=" << x << endl;
 
     cout << "c >=b ? : " << (c >= b) << endl;
     if (a > 1.1) cout << " a is bigger than 1.1" << endl;

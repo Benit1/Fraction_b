@@ -26,20 +26,24 @@ namespace ariel {
 
         Fraction(const Fraction &other);
 
+        Fraction(Fraction &&other) noexcept;
+
+        ~Fraction();
+
         // overload plus+ operator
         Fraction operator+(const Fraction &other) const;
         Fraction operator+(float flo);
-        friend Fraction operator+(const Fraction &other, float flo);
+        friend Fraction operator+(float flo,const Fraction &other);
 
         // overload minus- operator
         Fraction operator-(const Fraction &other) const;
         Fraction operator-(float flo);
-        friend Fraction operator-(const Fraction &other, float flo);
+        friend Fraction operator-(float flo,const Fraction &other);
 
         // overload div/ operator
         Fraction operator/(const Fraction &other) const;
         Fraction operator/(float flo) const;
-        friend Fraction operator/(const Fraction &other, float flo);
+        friend Fraction operator/(float flo,const Fraction &other);
 
         // overload mul* operator
         Fraction operator*(const Fraction &other) const;
@@ -58,6 +62,9 @@ namespace ariel {
         bool operator==(const Fraction &other) const;
         bool operator==(float flo) const;
         friend bool operator==(float flo, const Fraction &other);
+
+        Fraction &operator=(Fraction &&other) noexcept;
+        Fraction &operator=(const Fraction &other);
 
         // overload operator >=
         bool operator>=(const Fraction &other) const;
@@ -89,6 +96,11 @@ namespace ariel {
         int gcd(int numerator, int denominator);
 
         void minimize();
+
+        int getNumerator() const;
+
+        int getDenominator() const;
     };
+
 
 }
