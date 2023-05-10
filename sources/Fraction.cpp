@@ -90,7 +90,6 @@ namespace ariel {
         }
         //Create new fraction called sum
         Fraction sum(static_cast<int>(numerator_result), static_cast<int>(denominator_result));
-        //Reduce the value of the fraction
         return sum;
     }
 
